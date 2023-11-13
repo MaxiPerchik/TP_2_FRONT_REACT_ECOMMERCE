@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import UserPage from "./Componentes/User/UserPage";
+import UserRegister from "./Componentes/User/UserRegister";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserPage />
+    <UserRegister />
   </React.StrictMode>
 );
 
