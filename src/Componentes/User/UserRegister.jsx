@@ -7,12 +7,20 @@ const UserRegister = () => {
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [emailConfirmacion, setEmailConfirmacion] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const manejadorFormulario = async (event) => {
+  const manejadorFormulario = (event) => {
     event.preventDefault();
 
-    if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
+    if (
+      !nombre ||
+      !apellido ||
+      !telefono ||
+      !email ||
+      !emailConfirmacion ||
+      !password
+    ) {
       setError("Por favor completar todos los campos");
       return;
     }
@@ -23,22 +31,27 @@ const UserRegister = () => {
       return;
     }
 
+    const user = {
+      username: nombre + apellido,
+      email: email,
+      password: password,
+    };
+
+    console.log({ ...user });
+
     try {
       // Realizamos la solicitud de registro al servidor
-      const response = await fetch("http://localhost:3000/api/register", {
+      console.log("entras o no?");
+      const response = fetch("http://localhost:3000/api/users/register", {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          nombre,
-          apellido,
-          telefono,
-          email,
-        }),
+        body: JSON.stringify({ ...user }),
       });
 
-      if (response.ok) {
+      if (response) {
         // Registro exitoso, limpiamos los campos y mostramos la alerta
         limpiarCampos();
         Swal.fire({
@@ -68,6 +81,7 @@ const UserRegister = () => {
     setEmail("");
     setEmailConfirmacion("");
     setError("");
+    setPassword("");
   };
 
   return (
@@ -100,6 +114,14 @@ const UserRegister = () => {
           <input
             type="email"
             onChange={(e) => setEmailConfirmacion(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="">Password</label>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
