@@ -1,15 +1,16 @@
 import React from "react";
-
+import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+const NavBar = () => {
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
+          <a class="navbar-brand">
+            <Link to="/">Tienda Ecommerce</Link>
           </a>
+
           <button
             class="navbar-toggler"
             type="button"
@@ -24,23 +25,13 @@ function App() {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Home
+                <a class="nav-link active" aria-current="page">
+                  <Link to="/">Home</Link>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">
-                  Disabled
+                <a class="nav-link">
+                  <NavLink to="/register">Registro</NavLink>
                 </a>
               </li>
             </ul>
@@ -49,6 +40,6 @@ function App() {
       </nav>
     </div>
   );
-}
+};
 
-export default App;
+export default NavBar;
