@@ -3,6 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavBar = () => {
+  const token = localStorage.getItem("token");
+  const logout = () => {
+    if (token) {
+      localStorage.removeItem("token");
+    }
+  };
+
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,6 +40,16 @@ const NavBar = () => {
                 <a class="nav-link">
                   <NavLink to="/register">Registro</NavLink>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  <NavLink to="/login">Login</NavLink>
+                </a>
+              </li>
+              <li class="nav-item">
+                <button class="btn" onClick={logout}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
