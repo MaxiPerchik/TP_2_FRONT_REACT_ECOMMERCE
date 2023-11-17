@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import UserPage from "./Componentes/User/UserPage";
-import UserRegister from "./Componentes/User/UserRegister";
+
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

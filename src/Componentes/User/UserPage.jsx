@@ -6,39 +6,48 @@ const UserPage = () => {
 
   useEffect(() => {
     // Obtener el token almacenado en localStorage
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
-    // Verificar si hay un token
-    if (token) {
-      // Configurar el encabezado de autorización con el token
-      const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      };
+    // Configurar el encabezado de autorización con el token si está presente
+    const headers = token
+      ? {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        }
+      : {
+          "Content-Type": "application/json",
+        };
 
-      // Realizar la solicitud con el encabezado de autorización
-      fetch("http://localhost:3000/api/users", { headers })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsers(data);
-        })
-        .catch((error) => setError(error.message));
-    } else {
-      // Manejar el caso en que no hay un token disponible
-      setError("No se encontró un token de autenticación");
-    }
+    // Realizar la solicitud con el encabezado de autorización
+    fetch("http://localhost:3000/api/users", { headers })
+      .then(async (response) => {
+        if (!response.ok) {
+          // Capturar el mensaje de error del servidor
+          const data = await response.json();   
+          throw new Error(data.error || "Error desconocido del servidor");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => setError(error.message));
   }, []);
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className="container">Error: {error}</p>;
   }
 
   return (
-    <ul>
-      {users.map((user) => {
-        return <li key={user._id}>{user.email}</li>;
-      })}
-    </ul>
+    <div className="container">
+      <div className="row">
+        <ul className="col-8">
+          {users.map((user) => (
+            <li key={user._id}>{user.email}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 
