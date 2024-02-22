@@ -45,65 +45,64 @@ const NavBar = () => {
   }
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          {/* <a className="navbar-brand">
-            <Link to="/">Tienda Ecommerce</Link>
-          </a> */}
-          <Link to="/" className="navbar-brand">
-            <img
-              src={"../img/logo.png"}
-              alt="Logo Tienda Mueble Online"
-              className="logo-icon"
-            />
-          </Link>
+    <header className="bg-dark text-white">
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-dark">
+          <div className="container-fluid">
+            <Link to="/" className="navbar-brand">
+              <img
+                src={"../img/logo.png"}
+                alt="Logo Tienda Mueble Online"
+                className="logo-icon"
+              />
+            </Link>
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page">
-                  <Link to="/">Home</Link>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">
-                  <NavLink to="/register">Registro</NavLink>
-                </a>
-              </li>
-              <li className="nav-item">
-                {isLoggedIn ? (
-                  <button className="btn" onClick={logout}>
-                    Logout
-                  </button>
-                ) : (
-                  <a className="nav-link">
-                    <NavLink to="/login">Login</NavLink>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page">
+                    <Link to="/">Home</Link>
                   </a>
-                )}
-              </li>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">
+                    <NavLink to="/register">Registro</NavLink>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  {isLoggedIn ? (
+                    <button className="nav-link" onClick={logout}>
+                      Logout
+                    </button>
+                  ) : (
+                    <a className="nav-link">
+                      <NavLink to="/login">Login</NavLink>
+                    </a>
+                  )}
+                </li>
 
-              <li className="nav-item">
-                <a className="nav-link">
-                  <NavLink to="/users">See Users</NavLink>
-                </a>
-              </li>
-            </ul>
+                <li className="nav-item">
+                  <a className="nav-link">
+                    <NavLink to="/users">See Users</NavLink>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
+    </header>
   );
 };
 

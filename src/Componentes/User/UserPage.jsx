@@ -29,11 +29,16 @@ const UserPage = () => {
 
       // chequeamos si el token existe
       const headers = token
-        ? { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+        ? {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          }
         : { "Content-Type": "application/json" };
 
       // solicito a la API
-      const response = await fetch("http://localhost:3000/api/users", { headers });
+      const response = await fetch("http://localhost:3000/api/users", {
+        headers,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -52,13 +57,17 @@ const UserPage = () => {
 
   return (
     <div className="container">
-      <ToastContainer />
+      <h2 className="my-4 text-center">Listado de usuarios</h2>
       <div className="row">
-        <ul className="col-8">
-          {users.map((user) => (
-            <li key={user._id}>{user.email}</li>
-          ))}
-        </ul>
+        <div className="col-md-8">
+          <ul className="list-group">
+            {users.map((user) => (
+              <li key={user._id} className="list-group-item">
+                {user.email}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
