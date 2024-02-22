@@ -8,7 +8,6 @@ const NavBar = () => {
   const [isAdmin, setAdmin] = useState(false);
 
   useEffect(() => {
-    // Check if the token is present initially
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
 
@@ -16,10 +15,8 @@ const NavBar = () => {
       const decodedToken = decodeToken(token);
       const userRole = decodedToken.role;
 
-      // Verificar si el usuario tiene el rol de administrador
       const isAdmin = userRole === "admin";
 
-      // Hacer algo con la información de isAdmin (por ejemplo, actualizar el estado)
       setAdmin(isAdmin);
       console.log(isAdmin);
     }
