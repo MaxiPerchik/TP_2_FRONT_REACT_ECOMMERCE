@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./NavBar.css";
 
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -47,9 +48,16 @@ const NavBar = () => {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand">
+          {/* <a className="navbar-brand">
             <Link to="/">Tienda Ecommerce</Link>
-          </a>
+          </a> */}
+          <Link to="/" className="navbar-brand">
+            <img
+              src={"../img/logo.png"}
+              alt="Logo Tienda Mueble Online"
+              className="logo-icon"
+            />
+          </Link>
 
           <button
             className="navbar-toggler"

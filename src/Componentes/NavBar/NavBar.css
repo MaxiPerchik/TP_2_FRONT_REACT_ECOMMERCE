@@ -1,0 +1,23 @@
+.navbar-brand {
+  width: 200px;
+}
+
+.logo-icon {
+  width: 100px; /* Ajusta el tamaño según tus necesidades */
+  height: 100px; /* Ajusta el tamaño según tus necesidades */
+  border-radius: 50%; /* Hace que los bordes de la imagen sean redondeados */
+  border: 2px solid #007bff; /* Cambia el color del borde según tus preferencias */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: slideIn 0.5s forwards; /* Aplicar la animación a la navbar */
+}
